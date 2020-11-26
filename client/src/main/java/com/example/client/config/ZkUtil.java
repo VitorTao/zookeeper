@@ -166,15 +166,15 @@ public class ZkUtil {
 //    logger.info("【执行初始化测试方法getData返回值。。。。。。。。。。。。】={}",value);
     // 删除节点出发 监听事件
 //    deleteNode(path);
-    long t1 = System.currentTimeMillis();
-    countDownLatch = new CountDownLatch(100);
-    lockRunable lockRunable = new lockRunable(incre,countDownLatch);
-    for (int i = 0; i < 100; i++) {
-      new Thread(lockRunable).start();
-    }
-    countDownLatch.await();
-    long t2 = System.currentTimeMillis();
-    System.out.println("耗时："+(t2-t1)/1000);
+//    long t1 = System.currentTimeMillis();
+//    countDownLatch = new CountDownLatch(100);
+//    lockRunable lockRunable = new lockRunable(incre,countDownLatch);
+//    for (int i = 0; i < 100; i++) {
+//      new Thread(lockRunable).start();
+//    }
+//    countDownLatch.await();
+//    long t2 = System.currentTimeMillis();
+//    System.out.println("耗时："+(t2-t1)/1000);
   }
 
   class lockRunable implements Runnable{

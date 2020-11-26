@@ -1,5 +1,8 @@
 package com.example.client.config;
 
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
@@ -48,5 +51,12 @@ public class ZooConfig {
     return  zooKeeper;
   }
 
+  @Bean
+  public CuratorFramework getCuratorFramework(){
+    ExponentialBackoffRetry retryPolicy = new ExponentialBackoffRetry(1000, 3,Integer.MAX_VALUE);
+    CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient(connectString, retryPolicy);
+    curatorFramework.start();
+    return curatorFramework;
+  }
 
 }
